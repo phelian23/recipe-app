@@ -1,2 +1,3 @@
 class PublicRecipe < ApplicationRecord
+    
 end

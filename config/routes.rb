@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   root to: "foods#index"
 
   resources :foods, only: [:index, :new, :create, :destroy]
+  resources :public_recipes, only: [:index]
+
   resources :recipes, only: [:index, :new, :create, :destroy, :show]
   resources :inventories, only: [:index, :new, :create, :destroy, :show]
   devise_scope  :user do
