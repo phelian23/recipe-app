@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   # get 'users/index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root to: "users/sign_in#index"
+  root to: "foods#index"
+
+  resources :foods, only: [:index, :new, :create, :destroy]
 
   devise_scope  :user do
     get 'users/sign_out' => 'devise/sessions#destroy'
