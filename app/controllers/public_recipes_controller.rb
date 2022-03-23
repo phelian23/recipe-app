@@ -1,9 +1,8 @@
 class PublicRecipesController < ApplicationController
   def index
-  
-    @public_recipes = Recipe.where(public: true)
+    @public_recipes = Recipe.where(public: true).order(updated_at: :desc)
   end
-  def total_items
-    @total_item = Food.count
-  end
+  # def total_items
+  #   @total_item = Food.count
+  # end
 end
