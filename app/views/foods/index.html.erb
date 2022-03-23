@@ -1,5 +1,8 @@
 <h1> Foods </h1>
   <div>
+  <div>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+  </div>
         <div > <%= link_to 'New food', new_food_path(current_user.id) %></div> 
 
         <table class="table">
