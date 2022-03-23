@@ -8,11 +8,15 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
+
   def create
     @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
       flash[:success] = 'Recipe created succesfully'
-      redirect_to recipe_url(@recipe)
+      redirect_to recipes_url
     else
       render 'new'
     end

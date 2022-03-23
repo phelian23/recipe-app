@@ -1,0 +1,7 @@
+<div>
+  <h1><%= @recipe.name %></h1>
+  <h3>Preparation Time: <%= @recipe.preparationTime %> hours</h3>
+  <h3>Cooking Time: <%= @recipe.cookingTime %> hours</h3>  
+<label class="form-check-label">Public</label>
+<input class="form-check-input" type="checkbox" <%= @recipe.public %> />
+</div>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'public_recipes/index'
+  get 'inventories/index'
   # get 'recipes/index'
   # get 'users/index'
   devise_for :users
@@ -6,7 +8,8 @@ Rails.application.routes.draw do
   root to: "foods#index"
 
   resources :foods, only: [:index, :new, :create, :destroy]
-  # resources :recipes, only [:index, :new, :create, :destroy]
+  resources :recipes, only: [:index, :new, :create, :destroy, :show]
+  resources :inventories, only: [:index, :new, :create, :destroy, :show]
   devise_scope  :user do
     get 'users/sign_out' => 'devise/sessions#destroy'
   end
