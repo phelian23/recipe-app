@@ -10,7 +10,9 @@ class InventoriesController < ApplicationController
 
   def show
     @inventory = Inventory.find(params[:id])
-    # @foods = Food.all
+    @all_foods = Food.all
+    @user = current_user
+    @foods = @all_foods.where(user_id: @user.id)
   end
 
   def create
