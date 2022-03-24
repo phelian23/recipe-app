@@ -8,5 +8,6 @@ class PublicRecipesController < ApplicationController
     @prices = Food.all.sum(:price)
     @all_recipe = Recipe.all
     @public_recipes = @all_recipe.where(public: true)
+    # @all = Recipe.all
   end
 end

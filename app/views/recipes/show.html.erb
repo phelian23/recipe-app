@@ -3,7 +3,7 @@
   <h3>Preparation Time: <%= @recipe.preparationTime %> hours</h3>
   <h3>Cooking Time: <%= @recipe.cookingTime %> hours</h3>  
 <label class="form-check-label">Public</label>
-<%= form_with url: update_path(@recipe), method: "put" do |form| %>
+<%= form_with url: recipe_path(@recipe), method: "put" do |form| %>
           <div class="form-check form-switch fs-5 align-self-start">
       <% if !@recipe.public %>
         <%= form.check_box :public, id: "flexSwitchCheckDefault", class: "form-check-input", onchange: "this.form.submit();" %>

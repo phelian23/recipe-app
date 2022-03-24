@@ -10,6 +10,7 @@ class InventoriesController < ApplicationController
 
   def show
     @inventory = Inventory.find(params[:id])
+    # @foods = Food.all
   end
 
   def create
