@@ -28,12 +28,12 @@ class RecipesController < ApplicationController
     flash[:success] = 'Recipe deleted successfully'
     redirect_to recipes_url
   end
+
   def update
     @recipe = Recipe.find_by(id: params[:id])
-    @recipe.update_attribute(:public, true )
+    @recipe.update_attribute(:public, true)
     redirect_to recipes_url
   end
-  
 
   private
 
