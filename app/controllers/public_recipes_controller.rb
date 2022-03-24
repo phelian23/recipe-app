@@ -1,10 +1,12 @@
 class PublicRecipesController < ApplicationController
   def index
     @user = current_user
-    @total_item = current_user.recipes.all.count
+    # @users =User.all
+    @total_item = Recipe.all.count
     # @total_val = @user.recipe_foods.all(:quantity)
     # @total_item = current_user.foods.all.count
-    @prices = current_user.foods.all.sum(:price)
-    @public_recipes = Recipe.where(public: true)
+    @prices = Food.all.sum(:price)
+    @all_recipe = Recipe.all
+    @public_recipes = @all_recipe.where(public: true)
   end
 end

@@ -28,6 +28,8 @@ class RecipesController < ApplicationController
     flash[:success] = 'Recipe deleted successfully'
     redirect_to recipes_url
   end
+  
+  
 
   private
 
