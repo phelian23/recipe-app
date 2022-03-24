@@ -1,28 +1,33 @@
 class FoodsController < ApplicationController
-  before_action :authenticate_user!
+  def index
+    @foods = current_user.foods
+  end
 
-    def index
-     @foods = Food.all
-    end
-    def new
-     @food = Food.new
-    end
+  def new
+    @user = current_user
+    @food = Food.new
+  end
 
-    def create 
-        @food = Food.new(food_params)
-        # @food.user_id = @user.user_id
-        if @food.save
-        flash[:success] = 'Food created succesfully'
-        redirect_to user_path
-    
-        else
-        render 'new'
-        end
+  def create
+    @food = current_user.foods.create(food_params)
+    if @food.save
+      flash[:success] = 'Food created succesfully'
+      redirect_to foods_url
+    else
+      render 'new'
     end
+  end
 
-    private
+  def destroy
+    @food = Food.find(params[:id])
+    @food.destroy
+    flash[:success] = 'Food deleted successfully'
+    redirect_to root_path
+  end
 
-    def food_params
-    params.require(:food).permit(:name, :measurementUnit, :price)
-    end
+  private
+
+  def food_params
+    params.require(:food).permit(:name, :measurementUnit, :price, :user_id)
+  end
 end

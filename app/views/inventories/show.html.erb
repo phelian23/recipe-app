@@ -1,11 +1,12 @@
-<h1> Foods </h1>
-  <div>
-  <div>
-  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-  </div>
-        <div > <%= link_to 'New food', new_food_path(current_user.id) %></div> 
+<div>
+  <h1><%= @inventory.name %></h1>
+  <div > <%= link_to 'Add food', new_food_path(current_user.id) %></div>
+  
+ 
+ 
+  
 
-        <table class="table">
+ <table class="table">
         <thead>
             <tr>
             <th >Food</th>
@@ -16,7 +17,7 @@
         </thead>
 
         <tbody>
-        <% current_user.foods.each do |food| %>
+        <% @foods.each do |food|%>
             <tr>
             <td><%= food.name %></td>
             <td><%= food.measurementUnit %></td>
@@ -31,4 +32,4 @@
 
         </table>
 
-    </div>
+</div>
