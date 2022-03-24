@@ -3,11 +3,13 @@
 
   <% @public_recipes.each do |pr| %>
     <div>
-    <h2><%= pr.name %></h2> by:
-    <p><%= pr.user.name %> </p>
+    <h2><%= pr.name %>by: <%= pr.user.name %></h2>  
 
-    <p>Total food items: <%=  %> </p>
+     <p>Total food items: <%= @total_item%> </p>
+   
     </div>
-    <p>Total prices: <%= pr.user %> </p>
+  <p>Total Price: <%= @prices %> </p>
+    <p><%= pr.description %></p>
     <% end %>
+
 </div>
