@@ -22,7 +22,7 @@
             <td><%= food.measurementUnit %></td>
             <td><%= food.price %></td>
             <td><%= button_to "Delete Food", food_path(food.id), method: :delete, 
-                    data: {confirm: 'Are you sure?'}, class: "btn btn-primary" %> </td>
+                    data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %> </td>
             
             </tr>
             <% end %>

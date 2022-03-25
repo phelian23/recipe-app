@@ -1,0 +1,31 @@
+<section class="shopping-list">
+  <h1>Shopping List</h1>
+  <div class="shopping-counter d-flex">
+    <p>Amount of food items to buy: <%= Food.all.count %> </p>
+    <p> Total value of food needed: $ <%=  Food.all.sum(:price) %> </p>
+  </div>
+
+  <table class="table table-striped table-bordered border-dark">
+  <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Food.all.each do |food| %>
+      <tr>
+        <% quantity=RecipeFood.joins(:food).where(food_id: food.id).sum( 'quantity') %>
+        <td><%= food.name%></td>
+        <td><%= food.measurementUnit %></td>
+        <td>$<%= food.price %></td>
+        <td><%= button_to "Delete Food", food_path(food.id), method: :delete,
+                    data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+                    <%= button_to "Update Food", recipes_path(), method: :update,
+                    data: {confirm: 'Are you sure?'}, class: "btn btn-primary" %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</section>
