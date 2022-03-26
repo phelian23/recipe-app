@@ -1,17 +1,15 @@
 class InventoryFoodsController < ApplicationController
-  def index
-    @inventory_foods = InventoryFood.all
-  end
-
   def new
-    @inventory_food = InventoryFood.new
+    @inventory = Inventory.find(params[:inventory_id])
+    @inventory_food = @inventory.inventory_foods.new
   end
 
   def create
-    @inventory_food = InventoryFood.new(inventory_food_params)
+    @inventory = Inventory.find(params[:inventory_id])
+    @inventory_food = @inventory.inventory_foods.create(inventory_food_params)
     if @inventory_food.save
       flash[:success] = 'Food created succesfully'
-      redirect_to inventory_foods_url
+      redirect_to inventories_url
     else
       render 'new'
     end
@@ -27,6 +25,6 @@ class InventoryFoodsController < ApplicationController
   private
 
   def inventory_food_params
-    params.require(:inventory_food).permit(:quantity)
+    params.require(:inventory_food).permit(:quantity, :food_id)
   end
 end

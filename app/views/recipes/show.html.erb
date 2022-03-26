@@ -16,6 +16,22 @@
   <% end %>
   <div>
     
+  <div>
+      <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-outline-dark' %>
+      <%= form_with url: general_shopping_lists_index_url, local: true do |f|%>
+    <div>
+
+    <div>
+    <%= f.collection_select :inventory_id, Inventory.all, :id, :name, placeholder: 'Generate shopping list', prompt:true %><br>
+    </div>
+
+    <div>
+    <%= f.submit "Generate List" %>
+    </div>
+    </div>
+    <% end %>
+ 
+  </div>
   
   </div>
 
@@ -23,7 +39,7 @@
         <thead>
             <tr>
             <th >Food</th>
-            <th >Measurement Unit</th>
+            <th >Quantity</th>
             <th >Price</th>
             <th >Actions</th>
             </tr>
@@ -32,9 +48,9 @@
         <tbody>
         <% @foods.each do |food|%>
             <tr>
-            <td><%= food.name %></td>
-            <td><%= food.measurementUnit %></td>
-            <td><%= food.price %></td>
+            <td><%= food.food.name %></td>
+            <td><%= food.quantity %></td>
+            <td><%= food.food.price %></td>
             <td><%= button_to "Delete Food", food_path(food.id), method: :delete, 
                     data: {confirm: 'Are you sure?'}, class: "btn btn-primary" %> </td>
             
@@ -44,4 +60,5 @@
 
 
         </table>
+
 </div>

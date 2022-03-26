@@ -1,17 +1,15 @@
 class RecipeFoodsController < ApplicationController
-  def index
-    @recipe_foods = RecipeFood.all
-  end
-
   def new
-    @recipe_food = RecipeFood.new
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = @recipe.recipe_foods.new
   end
 
   def create
-    @recipe_food = RecipeFood.new(recipe_food_params)
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = @recipe.recipe_foods.create(recipe_food_params)
     if @recipe_food.save
       flash[:success] = 'Food created succesfully'
-      redirect_to recipe_foods_url
+      redirect_to recipes_url
     else
       render 'new'
     end
@@ -27,6 +25,6 @@ class RecipeFoodsController < ApplicationController
   private
 
   def recipe_food_params
-    params.require(:recipe_food).permit(:quantity)
+    params.require(:recipe_food).permit(:quantity, :food_id)
   end
 end

@@ -13,8 +13,13 @@ Rails.application.routes.draw do
   resources :foods, only: [:index, :new, :create, :destroy]
   resources :public_recipes, only: [:index]
 
-  resources :recipes, only: [:index, :new, :create, :destroy, :show, :update]
-  resources :inventories, only: [:index, :new, :create, :destroy, :show]
+  resources :recipes, only: [:index, :new, :create, :destroy, :show, :update] do
+    resources :recipe_foods, only: [:new, :create, :destroy]
+  end
+  resources :inventories, only: [:index, :new, :create, :destroy, :show] do
+    resources :inventory_foods, only: [:new, :create, :destroy]
+  end
+  
   devise_scope  :user do
     get 'users/sign_out' => 'devise/sessions#destroy'
   end
