@@ -8,7 +8,7 @@ RSpec.describe 'Food', type: :feature do
                             email: 'dan@gmail.com',
                             password: '1234567',
                             password_confirmation: '1234567')
-  
+
       within('#new_user') do
         fill_in 'Email', with: 'dan@gmail.com'
         fill_in 'Password', with: '1234567'
@@ -25,9 +25,9 @@ RSpec.describe 'Food', type: :feature do
     end
 
     it 'Add food page has the right fields' do
-        expect(page).to have_field('food[name]')
-        expect(page).to have_field('food[measurementUnit]')
-        expect(page).to have_field('food[price]')
+      expect(page).to have_field('food[name]')
+      expect(page).to have_field('food[measurementUnit]')
+      expect(page).to have_field('food[price]')
     end
   end
 end

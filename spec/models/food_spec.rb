@@ -25,8 +25,8 @@ RSpec.describe Food, type: :model do
     end
 
     it 'should validate price' do
-        food.price = 6
-        expect(food).to be_valid
-      end
+      food.price = 6
+      expect(food).to be_valid
     end
   end
+end
