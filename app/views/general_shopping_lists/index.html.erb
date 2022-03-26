@@ -1,12 +1,16 @@
 <div>
-  <h1><%= @inventory.name %></h1>
-  <div > <%= link_to 'Add food', new_inventory_inventory_food_path(current_user.id) %></div>
-  
- 
- 
-  
+  <h1>General Shopping Lists</h1>
 
- <table class="table">
+  <div>
+    <p>Amount of food items to buy: <%= RecipeFood.all.count %> </p>
+    <p>Recipe: Recipe 1</p>
+  </div>
+  <div>
+    <p> Total value of food needed: $ <%= Food.all.sum(:price) %> </p>
+    <p>Inventory: Inventory 2</p>
+  </div>
+
+  <table class="table">
         <thead>
             <tr>
             <th >Food</th>
@@ -17,7 +21,7 @@
         </thead>
 
         <tbody>
-        <% @foods.each do |food|%>
+        <% @missing_food.each do |food|%>
             <tr>
             <td><%= food.food.name %></td>
             <td><%= food.quantity %></td>
@@ -31,5 +35,4 @@
 
 
         </table>
-
 </div>

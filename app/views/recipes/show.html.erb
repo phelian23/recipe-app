@@ -14,5 +14,40 @@
       <% end %>
     </div>
   <% end %>
+  <div>
+    
+  <div>
+      <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-outline-dark' %>
+      <%= link_to 'Generate list', general_shopping_list_path(@recipe), class: 'btn btn-outline-dark' %>
+ 
+  </div>
+  
+  </div>
+
+   <table class="table">
+        <thead>
+            <tr>
+            <th >Food</th>
+            <th >Quantity</th>
+            <th >Price</th>
+            <th >Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <% @foods.each do |food|%>
+            <tr>
+            <td><%= food.food.name %></td>
+            <td><%= food.quantity %></td>
+            <td><%= food.food.price %></td>
+            <td><%= button_to "Delete Food", food_path(food.id), method: :delete, 
+                    data: {confirm: 'Are you sure?'}, class: "btn btn-primary" %> </td>
+            
+            </tr>
+            <% end %>
+        </tbody>
+
+
+        </table>
 
 </div>
