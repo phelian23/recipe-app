@@ -1,0 +1,38 @@
+<div>
+  <h1>General Shopping Lists</h1>
+
+  <div>
+    <p>Amount of food items to buy: <%= RecipeFood.all.count %> </p>
+    <p>Recipe: Recipe 1</p>
+  </div>
+  <div>
+    <p> Total value of food needed: $ <%= Food.all.sum(:price) %> </p>
+    <p>Inventory: Inventory 2</p>
+  </div>
+
+  <table class="table">
+        <thead>
+            <tr>
+            <th >Food</th>
+            <th >Quantity</th>
+            <th >Price</th>
+            <th >Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <% @missing_food.each do |food|%>
+            <tr>
+            <td><%= food.food.name %></td>
+            <td><%= food.quantity %></td>
+            <td><%= food.food.price %></td>
+            <td><%= button_to "Delete Food", food_path(food.id), method: :delete, 
+                    data: {confirm: 'Are you sure?'}, class: "btn btn-primary" %> </td>
+            
+            </tr>
+            <% end %>
+        </tbody>
+
+
+        </table>
+</div>

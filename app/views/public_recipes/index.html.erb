@@ -1,0 +1,17 @@
+<div>
+<h1>Public recipes List</h1>
+
+  <% @public_recipes.each do |pr| %>
+    <div>
+    <h2><%= pr.name %>by: <%= pr.user.name %></h2>  
+
+     <p>Total food items: <%= @total_item%> </p>
+   
+    </div>
+  <p>Total Price: <%= @prices %> </p>
+    <p><%= pr.description %></p>
+    <% end %>
+  
+    
+
+</div>
