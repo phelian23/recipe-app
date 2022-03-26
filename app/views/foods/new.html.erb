@@ -22,7 +22,7 @@
     <div class= "form-group d-flex my-4" >
       <%= f.label "Price (USD):", class: "col-sm-2 col-form-label text-end mx-4" %> 
       <div class = "col-sm-2" >
-      <%= f.number_field :price,   class:"form-control", autofocus: true %>
+      <%= f.number_field :price, step: :any, class:"form-control", autofocus: true %>
       </div>
     </div>
     

@@ -1,7 +1,7 @@
 <div>
 <h1>Inventory List</h1>
 
-<div > <%= link_to 'New Inventory', new_inventory_path(current_user.id) %></div>
+<div > <%= link_to 'New Inventory', new_inventory_path %></div>
 
   <% current_user.inventories.each do |inv| %>
     <div>

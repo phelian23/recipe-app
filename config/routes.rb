@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  get 'recipe_foods/index'
-  get 'inventory_foods/index'
-  get 'general_shopping_lists/index'
-  get 'public_recipes/index'
-  get 'inventories/index'
-  # get 'recipes/index'
-  # get 'users/index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "foods#index"

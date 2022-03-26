@@ -1,7 +1,7 @@
 <div>
 <h1>Recipe List</h1>
 
-<div > <%= link_to 'New Recipe', new_recipe_path(current_user.id) %></div>
+<div > <%= link_to 'New Recipe', new_recipe_path %></div>
 
   <% current_user.recipes.each do |recipe| %>
     <div>
