@@ -1,7 +1,7 @@
 class GeneralShoppingListsController < ApplicationController
   def index
-    @recipe_food = Recipe_food.find(params[:recipe_id])
-    @inventory_food = Inventory_food.find(params[:inventory_id])
-    @missing_food = @recipe_food.all
+    @recipe_food = RecipeFood.all
+    @inventory_food = InventoryFood.all
+    @missing_food = @recipe_food.food
   end
 end

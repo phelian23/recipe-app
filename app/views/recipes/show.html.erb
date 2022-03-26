@@ -18,18 +18,7 @@
     
   <div>
       <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-outline-dark' %>
-      <%= form_with url: general_shopping_lists_index_url, local: true do |f|%>
-    <div>
-
-    <div>
-    <%= f.collection_select :inventory_id, Inventory.all, :id, :name, placeholder: 'Generate shopping list', prompt:true %><br>
-    </div>
-
-    <div>
-    <%= f.submit "Generate List" %>
-    </div>
-    </div>
-    <% end %>
+      <%= link_to 'Generate list', general_shopping_list_path(@recipe), class: 'btn btn-outline-dark' %>
  
   </div>
   
